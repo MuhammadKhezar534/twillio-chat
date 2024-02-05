@@ -43,17 +43,6 @@ node {
             //node_cmd("yarn-test.sh")
         }
 
-        //stage('Code Analysis') {
-        //def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-        //withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-        //    sh """${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://sonarqube:9000 -Dsonar.login=${sonarLogin} \
-        //     -Dsonar.projectName=${env.SONAR_KEY} -Dsonar.projectVersion=${env.BUILD_TAG} -Dsonar.projectKey=${env.SONAR_KEY} \
-        //     -Dsonar.sources=${env.WORKSPACE} -Dsonar.exclusions=**/*.test.js -Dsonar.tests=${env.WORKSPACE} -Dsonar.test.inclusions=**/*.test.js \
-        //     -Dsonar.coverage.exclusions=**/*.boundary.* -Dsonar.cpd.exclusions=**/*.svg.js -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"""
-        //    checkSonarStatus(currentBuild, env)
-        //}
-        //}
-
         stage('Creating optimized build') {
             if (env.BRANCH_NAME == 'develop') {
                 dockerize('build-dev', 'develop');
