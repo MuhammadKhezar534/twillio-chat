@@ -60,6 +60,15 @@ export const setLastReadIndex = (index: number) => {
   };
 };
 
+export const upConversation = (convo: Conversation) => {
+  return (dispatch: Dispatch<Action>): void => {
+    dispatch({
+      type: ActionType.UPSERT_CONVERSATION,
+      payload: convo,
+    });
+  };
+};
+
 export const upsertMessages = (
   channelSid: string,
   messages: (Message | ReduxMessage)[]
